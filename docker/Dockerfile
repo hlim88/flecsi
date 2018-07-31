@@ -61,6 +61,7 @@ RUN if [ ${COVERAGE} ]; then \
     fi
 RUN make test ARGS="-V"
 RUN make install DESTDIR=${PWD}/install && rm -rf ${PWD}/install
+RUN make format-FleCSI && git diff
 RUN cd .. && if [ ${COVERAGE} ]; then \
   if [ ${CC} = clang ]; then \
     $HOME/.local/bin/codecov -F "${CC}" --gcov-exec "llvm-cov gcov"; \
