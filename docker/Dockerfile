@@ -94,5 +94,6 @@ fi && cd -
 USER root
 RUN make install
 USER flecsi
+RUN clang-format -version
 RUN make format-FleCSI && git diff
 WORKDIR /home/flecsi
